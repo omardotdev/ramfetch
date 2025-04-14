@@ -5,7 +5,7 @@
   </div>
   <div>
 <br>
-<img width="670" src="./assets/image.png">
+<img src="./assets/image.png">
 </div>
 </div>
 <br>
