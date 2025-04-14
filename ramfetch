@@ -21,7 +21,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-source /etc/ramfetch/ramfetchrc
+if [ -f /etc/ramfetch/ramfetchrc ]; then
+    source /etc/ramfetch/ramfetchrc
+else 
+    printf "[ramfetch] config file not found.. using default variables anyways"
+    BLK='\033[0;30m'
+    RED='\033[0;31m'
+    GRN='\033[1;32m'
+    YEL='\033[1;33m'
+    BLU='\033[0;34m'
+    PURP='\033[0;35m'
+    CYN='\033[0;36m'
+    WHT='\033[0;37m'
+fi
 
 if [ "$disable_colors" = "1" ]; then
     unset BLK
