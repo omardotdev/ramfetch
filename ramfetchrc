@@ -2,8 +2,8 @@
 # you can get a list of color codes at https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
 BLK='\033[0;30m'
 RED='\033[0;31m'
-GRN='\033[2;32m'
-YEL='\033[0;33m'
+GRN='\033[1;32m'
+YEL='\033[1;33m'
 BLU='\033[0;34m'
 PURP='\033[0;35m'
 CYN='\033[0;36m'
