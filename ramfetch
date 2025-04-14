@@ -67,7 +67,7 @@ END="$(printf "%b" "${WHT}")"
 # blue arrow
 BLUE_ARROW="$(printf "%b->%b" "${BLU}" "${WHT}")"
 # sets version
-RAMFETCH_VER="v1.2.0"
+RAMFETCH_VER="v1.2.1"
 
 # help and version
 if [ "$*" = "--help" ] || [ "$*" = "-h" ]; then
