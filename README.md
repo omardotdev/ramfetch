@@ -20,8 +20,6 @@ ramfetch works on:
 
 &check; Android, using termux (no root)
 
-i'm not really sure about bsd and macos since i didn't test them but yeah..
-
 ## Requirements
 
 `sh` for ramfetch to work.
