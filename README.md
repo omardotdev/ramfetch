@@ -57,6 +57,7 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
+Once installed, you can also modify a config file `/etc/ramfetch/ramfetchrc` which allows you to customize colors aswell as disable colors too.
 
 ## Reinstall
 Reinstall ramfetch using `make`.
