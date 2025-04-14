@@ -34,7 +34,7 @@ i'm not really sure about bsd and macos since i didn't test them but yeah..
 ### Run with curl
 If you don't wanna install ramfetch/clone this repo. you can run it with curl.
 ```bash
-$ curl https://raw.githubusercontent.com/omardotdev/ramfetch/refs/heads/main/ramfetch| sh
+$ curl https://raw.githubusercontent.com/omardotdev/ramfetch/refs/heads/main/ramfetch | sh
 ```
 
 ### AUR
