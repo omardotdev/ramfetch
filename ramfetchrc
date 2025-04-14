@@ -1,0 +1,27 @@
+# if you'd like to modify colors that output in ramfetch, you can modify them here
+# you can get a list of color codes at https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
+
+# these are colors for the linux tty, since some of the colors aren't as intended..
+if [ "$TERM" = "linux" ]; then
+    BLK='\033[0;30m'
+    RED='\033[0;31m'
+    GRN='\033[1;32m'
+    YEL='\033[1;33m'
+    BLU='\033[0;34m'
+    PURP='\033[0;35m'
+    CYN='\033[0;36m'
+    WHT='\033[0;37m'
+fi
+
+# these are the colors for other terminals rather than linux's tty
+BLK='\033[0;30m'
+RED='\033[0;31m'
+GRN='\033[2;32m'
+YEL='\033[0;33m'
+BLU='\033[0;34m'
+PURP='\033[0;35m'
+CYN='\033[0;36m'
+WHT='\033[0;37m'
+
+# you can also disable colors by uncommenting this
+#disable_colors=1
