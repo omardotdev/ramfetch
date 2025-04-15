@@ -89,26 +89,7 @@ EOF
 exit 0
 fi
 
-
-# Sed input. Basically use regex to get the number + kB part and replace it itself to ensure the capture group is printed
-# 's/[^0-9]*\([0-9]* kB\)/\1/'
-# 's' - subsitution
-# '/' - regex start
-# '[^0-9]*' - match all except 0-9 zero or more times
-# '\' - escape parenthesis
-# '(' - capture group, everything inside will be saved as result of it
-# '[0-9]*' match 0-9 zero or more times exluding unit (' kB') [unit is always kB]
-# '\' - escape parenthesis
-# ')' - capture group close
-# ' kB' -
-# '/' subsitution end, replace start
-# '\1' - everything from capture group
-# '/' - end replace
-
 # Fetches memory information from /proc/meminfo
-# Desired feild captured with case, sed extracts value
-# numfmt converts kB to more readable format
-
 human_readable_size() {
     local bytes prefix frac whole
     bytes=$(($1 * 1000))
