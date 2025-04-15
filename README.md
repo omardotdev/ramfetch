@@ -24,7 +24,7 @@ ramfetch works on:
 
 `sh` for ramfetch to work.
 
-`make` to install ramfetch. (optional)
+`make` to install ramfetch. 
 
 
 ## Install
@@ -46,7 +46,7 @@ $ yay -S ramfetch-git
 $ paru -S ramfetch-git
 ```
 
-### Codeberg
+### Github
 Clone this repo.
 ```bash
 $ git clone https://github.com/omardotdev/ramfetch
