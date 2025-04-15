@@ -67,7 +67,7 @@ END="$(printf "%b" "${WHT}")"
 # blue arrow
 BLUE_ARROW="$(printf "%b->%b" "${BLU}" "${WHT}")"
 # sets version
-RAMFETCH_VER="v1.2.1"
+RAMFETCH_VER="v1.2.2"
 
 # help and version
 if [ "$*" = "--help" ] || [ "$*" = "-h" ]; then
@@ -109,35 +109,44 @@ fi
 # Desired feild captured with case, sed extracts value
 # numfmt converts kB to more readable format
 
-format_value() {
-  printf "%s" "$@" | 
-    sed 's/[^0-9]*\([0-9]*\) kB/\1/' |
-    numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore'
+human_readable_size() {
+    local bytes prefix frac whole
+    bytes=$(($1 * 1000))
+    case $bytes in
+        ????????????????*) frac="???????????????" prefix=P ;;
+        ?????????????*) frac="????????????" prefix=T ;;
+        ??????????*) frac="?????????" prefix=G ;;
+        ???????*) frac="??????" prefix=M ;;
+        ????*) frac="???" prefix=k ;;
+    esac
+
+    whole=${bytes%$frac}
+    frac=${bytes#"$whole"}
+    LC_NUMERIC=C printf -v size '%9.2f %sB' "$whole.$frac" "$prefix"
 }
 
-while read -r REPLY; do
-    case "${REPLY}" in
-        (MemTotal:*)        MEM_TOTAL=$(format_value "$REPLY") ;;
-        (MemFree:*)         MEM_FREE=$(format_value "$REPLY") ;;
-        (MemAvailable:*)    MEM_AVAILABLE=$(format_value "$REPLY") ;;
-        (MemTotal:*)        MEM_TOTAL=$(format_value "$REPLY") ;;
-        (MemAvailable:*)    MEM_AVAILABLE=$(format_value "$REPLY") ;;
-        (WritebackTmp:*)    WRITE_BACK_TMP=$(format_value "$REPLY") ;;
-        (VmallocTotal:*)    VMALLOC_TOTAL=$(format_value "$REPLY") ;;
-        (VmallocUsed:*)     VMALLOC_USED=$(format_value "$REPLY") ;;
-        (Mapped:*)          MAPPED=$(format_value "$REPLY") ;;
-        (Buffers:*)         BUFFERS=$(format_value "$REPLY") ;;
-        (Cached:*)          CACHED=$(format_value "$REPLY") ;;
-        (SwapTotal:*)       SWAP_TOTAL=$(format_value "$REPLY") ;;
-        (SwapFree:*)        SWAP_FREE=$(format_value "$REPLY") ;; 
-        (Zswap:*)           ZSWAP=$(format_value "$REPLY") ;; 
-        (Zswapped:*)        ZSWAPPED=$(format_value "$REPLY") ;;
-        (SwapCached:*)      SWAP_CACHED=$(format_value "$REPLY") ;;
-        (Dirty:*)           DIRTY=$(format_value "$REPLY") ;;
-        (KernelStack:*)     KERNEL_STACK=$(format_value "$REPLY") ;; 
-        (Percpu:*)          PER_CPU=$(format_value "$REPLY") ;;
-        (Active:*)          ACTIVE=$(format_value "$REPLY") ;;
-        (Inactive:*)        INACTIVE=$(format_value "$REPLY") ;;
+while read -r name value prefix; do
+    human_readable_size "$value"
+    case ${name%:} in
+        MemTotal) MEM_TOTAL=$size ;;
+        MemFree) MEM_FREE=$size ;;
+        MemAvailable) MEM_AVAILABLE=$size ;;
+        Buffers) BUFFERS=$size ;;
+        Cached) CACHED=$size ;;
+        SwapTotal) SWAP_TOTAL=$size ;;
+        SwapFree) SWAP_FREE=$size ;;
+        Zswap) ZSWAP=$size ;;
+        Zswapped) ZSWAPPED=$size ;;
+        SwapCached) SWAP_CACHED=$size ;;
+        Dirty) DIRTY=$size ;;
+        KernelStack) KERNEL_STACK=$size ;;
+        Percpu) PER_CPU=$size ;;
+        WritebackTmp) WRITE_BACK_TMP=$size ;;
+        VmallocTotal) VMALLOC_TOTAL=$size ;;
+        VmallocUsed) VMALLOC_USED=$size ;;
+        Mapped) MAPPED=$size ;;
+        Active) ACTIVE=$size ;;
+        Inactive) INACTIVE=$size ;;
     esac
 done < /proc/meminfo
 
@@ -146,7 +155,7 @@ cat <<EOF
 
 $GREEN_PART   ████████████████████████████     $HOST_AND_USER
 $GREEN_PART ████████████████████████████████$END   $(printf '%0.s-' $(seq 1 "$HOST_AND_USER_LEN"))
-$GREEN_PART ████      ████      ███      ███$END   RAM Total $GRN_ARROW $(printf "\t") ${MEM_TOTAL:-null}
+$GREEN_PART ████      ████      ███      ███$END   RAM Total $GRN_ARROW  $(printf "\t") ${MEM_TOTAL:-null}
 $GREEN_PART ████      ████      ███      ███$END   RAM Free $GRN_ARROW $(printf "\t") ${MEM_FREE:-null}
 $GREEN_PART ████      ████      ███      ███$END   RAM Available $GRN_ARROW $(printf "\t") ${MEM_AVAILABLE:-null}
 $GREEN_PART ████      ████      ███      ███$END   Buffers $GRN_ARROW $(printf "\t\t") ${BUFFERS:-null}
