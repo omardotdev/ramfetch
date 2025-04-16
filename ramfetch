@@ -35,7 +35,7 @@ else
     WHT='\033[0;37m'
 fi
 
-if [ "$disable_colors" = "1" ]; then
+if [ "${disable_colors-unset}" != "unset" ] && [ "$disable_colors" = "1" ]; then
     unset BLK
     unset RED
     unset GRN
