@@ -22,9 +22,9 @@
 # SOFTWARE.
 
 if [ -f /etc/ramfetch/ramfetchrc ]; then
-    source /etc/ramfetch/ramfetchrc
-else 
-    printf "[ramfetch] config file not found.. using default variables anyways"
+    . /etc/ramfetch/ramfetchrc
+else
+    printf "[ramfetch] config file not found.. using default variables anyways.\n"
     BLK='\033[0;30m'
     RED='\033[0;31m'
     GRN='\033[1;32m'
@@ -35,7 +35,7 @@ else
     WHT='\033[0;37m'
 fi
 
-if [ "$disable_colors" = "1" ]; then
+if [ "${disable_colors-unset}" != "unset" ] && [ "$disable_colors" = "1" ]; then
     unset BLK
     unset RED
     unset GRN
@@ -54,6 +54,7 @@ fi
 # green arrow
 GRN_ARROW="$(printf "%b->%b" "${GRN}" "${WHT}")"
 # hostname/hostname length
+HOSTNAME=$(uname -n)
 HOST_AND_USER_LEN=$(( ${#HOSTNAME} + ${#USER} + 1 ))
 HOST_AND_USER="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
 # colorblocks
