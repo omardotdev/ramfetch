@@ -54,6 +54,7 @@ fi
 # green arrow
 GRN_ARROW="$(printf "%b->%b" "${GRN}" "${WHT}")"
 # hostname/hostname length
+HOSTNAME=$(uname -n)
 HOST_AND_USER_LEN=$(( ${#HOSTNAME} + ${#USER} + 1 ))
 HOST_AND_USER="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
 # colorblocks
