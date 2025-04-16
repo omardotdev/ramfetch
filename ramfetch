@@ -23,8 +23,8 @@
 
 if [ -f /etc/ramfetch/ramfetchrc ]; then
     source /etc/ramfetch/ramfetchrc
-else 
-    printf "[ramfetch] config file not found.. using default variables anyways"
+else
+    printf "[ramfetch] config file not found.. using default variables anyways.\n"
     BLK='\033[0;30m'
     RED='\033[0;31m'
     GRN='\033[1;32m'
