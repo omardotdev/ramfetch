@@ -32,7 +32,7 @@ ramfetch works on:
 ### Run with curl
 If you don't wanna install ramfetch/clone this repo. you can run it with curl.
 ```bash
-$ curl https://raw.githubusercontent.com/omardotdev/ramfetch/refs/heads/main/ramfetch | sh
+$ curl https://raw.githubusercontent.com/omardotdev/ramfetch/refs/heads/main/ramfetch | bash
 ```
 
 ### AUR
