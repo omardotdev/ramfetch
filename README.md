@@ -46,6 +46,8 @@ $ yay -S ramfetch-git
 $ paru -S ramfetch-git
 ```
 
+**NOTE**: The AUR package is outdated and is still at 1.1 which is a very old version of ramfetch, I would recommend installing using `make` to execute/install ramfetch
+
 ### Github
 Clone this repo.
 ```bash
@@ -57,14 +59,5 @@ Install ramfetch using `make install`.
 ```
 Once installed, you can also modify a config file `/etc/ramfetch/ramfetchrc` which allows you to customize colors aswell as disable colors too.
 
-## Reinstall
-Reinstall ramfetch using `make`.
-```bash
-# make reinstall
-```
-
-## Uninstall
-Uninstall ramfetch using `make`.
-```bash
-# make uninstall
-```
+## Uninstall/Reinstall
+You can use `make uninstall` to uninstall ramfetch and also `make reinstall` to reinstall ramfetch or to upgrade it :)
