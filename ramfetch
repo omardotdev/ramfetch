@@ -53,6 +53,13 @@ if [ "${disable_colors-unset}" != "unset" ] && [ "$disable_colors" = "1" ]; then
     unset PURP
     unset CYN
     unset WHT
+    unset BLK_H
+    unset RED_H
+    unset YEL_H
+    unset BLU_H
+    unset PURP_H
+    unset CYN_H
+    unset WHT_H
 fi
 
 if [ ! -f /proc/meminfo ]; then
