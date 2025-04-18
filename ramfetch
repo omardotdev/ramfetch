@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 if [ -f /etc/ramfetch/ramfetchrc ]; then
-    . ./ramfetchrc
+    . /etc/ramfetch/ramfetchrc
 else
     printf "[ramfetch] config file not found.. using default variables anyways.\n"
     BLK='\033[0;30m'
