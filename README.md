@@ -5,7 +5,7 @@
   </div>
   <div>
 <br>
-<img src="https://github.com/user-attachments/assets/eaf036a1-91bb-4f56-a783-5e18291e1de5">
+<img src="https://github.com/user-attachments/assets/ffc9efd8-f688-4460-b18f-1ae097ee7285">
 </div>
 </div>
 <br>
@@ -28,6 +28,8 @@ ramfetch works on:
 
 
 ## Install
+
+**NOTE**: If your upgrading from 1.2.x to 1.3, please use the config file with the new high density color variables or the high density colorblocks will be all blank.
 
 ### Run with curl
 If you don't wanna install ramfetch/clone this repo. you can run it with curl.
