@@ -33,6 +33,18 @@ else
     PURP='\033[0;35m'
     CYN='\033[0;36m'
     WHT='\033[0;37m'
+    BLK_H='\033[0;90m'
+    RED_H='\033[0;91m'
+    GRN_H='\033[0;92m'
+    YEL_H='\033[0;93m'
+    BLU_H='\033[0;94m'
+    PURP_H='\033[0;95m'
+    CYN_H='\033[0;96m'
+    WHT_H='\033[0;97m'
+fi
+
+if [ -z "$_H" ]; then
+  echo "[ramfetch] high density colors no found"
 fi
 
 if [ "${disable_colors-unset}" != "unset" ] && [ "$disable_colors" = "1" ]; then
@@ -60,7 +72,7 @@ HOST_AND_USER="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" 
 # colorblocks
 COLORBLOCKS="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
 # high intensity colorblocks
-COLORBLOCKS_H="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK_H}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
+COLORBLOCKS_H="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK_H}" "███" "${RED_H}" "███" "${GRN_H}" "███" "${BLU_H}" "███" "${YEL_H}" "███" "${PURP_H}" "███" "${CYN_H}" "███" "${WHT_H}" "███" "${WHT_H}")"
 # yellow part
 YELLOW_PART="$(printf "%b" "${YEL}")"
 # green part
