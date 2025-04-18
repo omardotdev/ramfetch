@@ -21,26 +21,37 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-if [ -f /etc/ramfetch/ramfetchrc ]; then
+if [ -f $HOME/.config/ramfetch/ramfetchrc ]; then
+    . $HOME/.config/ramfetch/ramfetchrc
+elif [ -f /etc/ramfetch/ramfetchrc ]; then
     . /etc/ramfetch/ramfetchrc
 else
-    printf "[ramfetch] config file not found.. using default variables anyways.\n"
-    BLK='\033[0;30m'
-    RED='\033[0;31m'
-    GRN='\033[1;32m'
-    YEL='\033[1;33m'
-    BLU='\033[0;34m'
-    PURP='\033[0;35m'
-    CYN='\033[0;36m'
-    WHT='\033[0;37m'
-    BLK_H='\033[0;90m'
-    RED_H='\033[0;91m'
-    GRN_H='\033[0;92m'
-    YEL_H='\033[0;93m'
-    BLU_H='\033[0;94m'
-    PURP_H='\033[0;95m'
-    CYN_H='\033[0;96m'
-    WHT_H='\033[0;97m'
+    printf "[ramfetch] config file not found.. creating config file in ~/.config/ramfetch/ramfetchrc..\n"
+    mkdir -p $HOME/.config/ramfetch
+    echo "# if you'd like to modify colors that output in ramfetch, you can modify them here
+# you can get a list of color codes at https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
+BLK='\033[0;30m'
+RED='\033[0;31m'
+GRN='\033[1;32m'
+YEL='\033[1;33m'
+BLU='\033[0;34m'
+PURP='\033[0;35m'
+CYN='\033[0;36m'
+WHT='\033[0;37m'
+
+# high intensity colors
+BLK_H='\033[0;90m'
+RED_H='\033[0;91m'
+GRN_H='\033[0;92m'
+YEL_H='\033[0;93m'
+BLU_H='\033[0;94m'
+PURP_H='\033[0;95m'
+CYN_H='\033[0;96m'
+WHT_H='\033[0;97m'
+
+# you can also disable colors by uncommenting this
+#disable_colors=1" >> $HOME/.config/ramfetch/ramfetchrc
+    . $HOME/.config/ramfetch/ramfetchrc
 fi
 
 
@@ -86,7 +97,7 @@ END="$(printf "%b" "${WHT}")"
 # blue arrow
 BLUE_ARROW="$(printf "%b->%b" "${BLU}" "${WHT}")"
 # sets version
-RAMFETCH_VER="v1.3.0"
+RAMFETCH_VER="v1.3.1"
 
 # help and version
 if [ "$*" = "--help" ] || [ "$*" = "-h" ]; then
