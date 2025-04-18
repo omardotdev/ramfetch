@@ -43,9 +43,6 @@ else
     WHT_H='\033[0;97m'
 fi
 
-if [ -z "$_H" ]; then
-  echo "[ramfetch] high density colors no found"
-fi
 
 if [ "${disable_colors-unset}" != "unset" ] && [ "$disable_colors" = "1" ]; then
     unset BLK
