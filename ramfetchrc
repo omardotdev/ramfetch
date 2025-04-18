@@ -9,5 +9,15 @@ PURP='\033[0;35m'
 CYN='\033[0;36m'
 WHT='\033[0;37m'
 
+# high intensity colors
+BLK_H='\033[0;90m'
+RED_H='\033[0;91m'
+GRN_H='\033[0;92m'
+YEL_H='\033[0;93m'
+BLU_H='\033[0;94m'
+PURP_H='\033[0;95m'
+CYN_H='\033[0;96m'
+WHT_H='\033[0;97m'
+
 # you can also disable colors by uncommenting this
 #disable_colors=1

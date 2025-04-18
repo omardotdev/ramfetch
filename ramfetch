@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 if [ -f /etc/ramfetch/ramfetchrc ]; then
-    . /etc/ramfetch/ramfetchrc
+    . ./ramfetchrc
 else
     printf "[ramfetch] config file not found.. using default variables anyways.\n"
     BLK='\033[0;30m'
@@ -59,6 +59,8 @@ HOST_AND_USER_LEN=$(( ${#HOSTNAME} + ${#USER} + 1 ))
 HOST_AND_USER="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
 # colorblocks
 COLORBLOCKS="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
+# high intensity colorblocks
+COLORBLOCKS_H="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK_H}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
 # yellow part
 YELLOW_PART="$(printf "%b" "${YEL}")"
 # green part
@@ -68,7 +70,7 @@ END="$(printf "%b" "${WHT}")"
 # blue arrow
 BLUE_ARROW="$(printf "%b->%b" "${BLU}" "${WHT}")"
 # sets version
-RAMFETCH_VER="v1.2.3"
+RAMFETCH_VER="v1.3.0"
 
 # help and version
 if [ "$*" = "--help" ] || [ "$*" = "-h" ]; then
@@ -158,4 +160,5 @@ $YELLOW_PART ██████████████████   ███�
                                     Inactive $GRN_ARROW $(printf "\t") ${INACTIVE:-null}
 
                                     $COLORBLOCKS
+                                    $COLORBLOCKS_H
 EOF
